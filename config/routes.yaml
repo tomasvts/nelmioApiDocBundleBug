@@ -1,2 +1,3 @@
 routes:
     resource: '_routes/company.yaml'
+    prefix: /api/v1

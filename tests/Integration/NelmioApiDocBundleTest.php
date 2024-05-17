@@ -27,7 +27,7 @@ class NelmioApiDocBundleTest extends KernelTestCase
     public function testCompanyController(): void
     {
         $kernel = self::bootKernel();
-        $response = $kernel->handle(Request::create('/company'));
+        $response = $kernel->handle(Request::create('/api/v1/company'));
 
         $devDetails = [];
         try {
