@@ -3,13 +3,19 @@
 namespace App\Controller;
 
 use App\Company\Domain\Company;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Attributes\Get;
+use OpenApi\Attributes\JsonContent;
+use OpenApi\Attributes\Property;
+use OpenApi\Attributes\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyController;
 
 class CompanyController extends SymfonyController
 {
     #[Get(description: 'Get company details', summary: 'Get company details')]
-    #[ModelResponse(Company::class)]
+    #[Response(content: new JsonContent(properties: [
+        new Property(property: 'data', ref: new Model(type: Company::class))
+    ]))]
     public function index()
     {
         $company = new Company(
@@ -19,9 +25,11 @@ class CompanyController extends SymfonyController
         );
 
         return $this->json([
-            'id'      => $company->id(),
-            'name'    => $company->name(),
-            'addedAt' => $company->addedAt(),
+            'data' => [
+                'id'      => $company->id(),
+                'name'    => $company->name(),
+                'addedAt' => $company->addedAt(),
+            ]
         ]);
     }
 
