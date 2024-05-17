@@ -11,12 +11,20 @@ php composer.phar install
 ```
 
 # Reproduce the error
-Execute test NelmioApiDocBundleTest.php
+## With the browser
+1. Go to the public folder and launch the php server
+```
+cd public 
+php -S 0.0.0.0:8084
+```
+2. Navigate to http://0.0.0.0:8084/api/doc
+
+## With the console/phpunit tests
+1. Execute test NelmioApiDocBundleTest.php
 ```
 ./vendor/phpunit/phpunit/phpunit tests/Integration/NelmioApiDocBundleTest.php
 ```
-
-The output should be:
+2. The output should be:
 ```
 PHPUnit 9.6.19 by Sebastian Bergmann and contributors.
 
