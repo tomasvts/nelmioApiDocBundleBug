@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyContr
 class CompanyController extends SymfonyController
 {
     #[Get(description: 'Get company details', summary: 'Get company details')]
-    #[Response(content: new JsonContent(properties: [
+    #[Response(response: 200, description: 'Response', content: new JsonContent(properties: [
         new Property(property: 'data', ref: new Model(type: Company::class))
     ]))]
     public function index()
